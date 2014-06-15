@@ -57,8 +57,7 @@
     "queue": "^2.2.0",
     "jstoxml": "^0.2.2",
     "newrelic": "^1.5.3",
-    "mohi-io": "1.0.0",
-    "underscore": "^1.6.0",
+    "mohi-io": "0.1.0",
     "bitbucket-api": "^0.0.6"
   },
   "devDependencies": {
