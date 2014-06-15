@@ -45,5 +45,8 @@
   "newrelic": {
     "license_key": "",
     "logging": "info"
+  },
+  "storage": {
+    "type": "file"
   }
 }
