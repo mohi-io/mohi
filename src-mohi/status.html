@@ -1,0 +1,23 @@
+@@include('inc/top.html', {
+  "id": "status-page",
+  "title": "Dependency status for {{user}} - {{manifest.name}} {{manifest.version}}",
+  "headHtml": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS\" href=\"/{{provider}}/{{user}}/{{repo}}/rss.xml\">"
+})
+
+  <div id="repo">
+    <h1>
+      <a href="{{repoSite}}/{{user}}">{{user}}</a> -
+      <a href="{{repoSite}}/{{user}}/{{repo}}">{{manifest.project.name}}</a>
+      <span>{{manifest.project.version}}</span>
+      <a id="status" href="#badge-embed" title="Get badge embed code"><img src="/{{provider}}/{{user}}/{{repo}}.svg" alt="Dependency status"></a>
+    </h1>
+    {{#if manifest.project.description}}
+    <p>{{manifest.project.description}}</p>
+    {{/if}}
+    @@include('inc/embed-badge.html')
+  </div>
+  <div id="dep-info">
+    @@include('inc/info.html')
+  </div>
+
+@@include('inc/bottom.html')

@@ -1,5 +1,9 @@
 *.iml
+*.ipr
+*.iws
 .idea
 config/runtime.json
 dist
 node_modules
+var
+.gradle

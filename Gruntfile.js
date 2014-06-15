@@ -1,4 +1,7 @@
-module.exports = function(grunt) {
+//var SRC_DIR = "src/";
+var SRC_DIR = "src-mohi/";
+
+module.exports = function (grunt) {
 
   grunt.initConfig({
 
@@ -11,14 +14,14 @@ module.exports = function(grunt) {
       dist: {
         files: [
           // Copy all (non hidden) files (not directories) from src
-          {dest: "dist/", src: ["*", "!LICENSE.md"], filter: "isFile", expand: true, cwd: "src/"},
+          {dest: "dist/", src: ["*", "!LICENSE.md"], filter: "isFile", expand: true, cwd: SRC_DIR},
 
           // Copy any JavaScript libs
-          {dest: "dist/", src: "js/vendor/*.min.js", expand: true, cwd: "src/"},
+          {dest: "dist/", src: "js/vendor/*.min.js", expand: true, cwd: SRC_DIR},
 
           // Copy other resources
-          {dest: "dist/", src: "fonts/**", expand: true, cwd: "src/"},
-          {dest: "dist/", src: "img/**", expand: true, cwd: "src/"}
+          {dest: "dist/", src: "fonts/**", expand: true, cwd: SRC_DIR},
+          {dest: "dist/", src: "img/**", expand: true, cwd: SRC_DIR}
         ]
       }
     },
@@ -31,12 +34,13 @@ module.exports = function(grunt) {
             headHtml: "",
             hostname: "<%= conf.site.hostname %>",
             npmsite: "<%= conf.npm.hostname %>",
-            githubsite: "<%= conf.github.protocol %>://<%= conf.github.host %>"
+            githubsite: "<%= conf.github.protocol %>://<%= conf.github.host %>",
+            bitbucketsite: "<%= conf.bitbucket.protocol %>://<%= conf.bitbucket.host %>"
           }
         },
         files: [
-          {src: "*.html", dest: "dist/", expand: true, cwd: "src/"},
-          {src: "inc/*.html", dest: "dist/", expand: true, cwd: "src/"}
+          {src: "*.html", dest: "dist/", expand: true, cwd: SRC_DIR},
+          {src: "inc/*.html", dest: "dist/", expand: true, cwd: SRC_DIR}
         ]
       }
     },
@@ -44,7 +48,7 @@ module.exports = function(grunt) {
     less: {
       compile: {
         files: {
-          "dist/css/main-<%= pkg.version %>.css": "src/css/main.less"
+          "dist/css/main-<%= pkg.version %>.css": SRC_DIR + "css/main.less"
         }
       },
       minify: {
@@ -61,7 +65,7 @@ module.exports = function(grunt) {
 
     browserify: {
       dist: {
-        files: {"dist/js/bundle-<%= pkg.version %>.js": "src/js/main.js"},
+        files: {"dist/js/bundle-<%= pkg.version %>.js": SRC_DIR + "js/main.js"},
         options: {transform: ["brfs"]}
       }
     },
@@ -84,7 +88,7 @@ module.exports = function(grunt) {
 
     // Lint the server JavaScript
     jshint: {
-      files: ["*.js", "src/js/*.js", "!src/js/plugins.js", "test/*.js"],
+      files: ["*.js", SRC_DIR + "js/*.js", "!" + SRC_DIR + "js/plugins.js", "test/*.js"],
       options: {
         jshintrc: ".jshintrc"
       }
@@ -99,7 +103,7 @@ module.exports = function(grunt) {
     watch: {
       project: {
         options: {atBegin: true},
-        files: ["src/js/**/*.js", "src/css/**/*.less", "src/**/*.html", "src/img/**/*"],
+        files: [SRC_DIR + "js/**/*.js", SRC_DIR + "css/**/*.less", SRC_DIR + "**/*.html", SRC_DIR + "img/**/*"],
         tasks: ["copy", "includereplace", "less:compile", "browserify"]
       }
     },
@@ -107,7 +111,7 @@ module.exports = function(grunt) {
     clean: {
       dist: "dist/*"
     }
-  })
+  });
 
   // Load the grunt plugins
   grunt.loadNpmTasks("grunt-browserify")
@@ -123,4 +127,5 @@ module.exports = function(grunt) {
   grunt.registerTask("base", ["jshint", "nodeunit", "copy", "includereplace", "less:compile", "browserify"])
   grunt.registerTask("min", ["less:minify", "uglify"])
   grunt.registerTask("default", ["base", "min"])
+  grunt.registerTask("heroku", ["base", "min"]);
 }

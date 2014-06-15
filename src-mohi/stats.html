@@ -1,0 +1,18 @@
+@@include('inc/top.html', {"id": "stats-page", "title": "Stats for java projects"})
+
+  <h1>Stats</h1>
+
+  <div id="recently-watched" class="box">
+    <h2>Recently started watching</h2>
+    {{#if recentlyRetrievedManifests.length}}
+    <ul class="border-list">
+      {{#each recentlyRetrievedManifests}}
+      <li>{{user}} - <a href="/{{provider}}/{{user}}/{{repo}}">{{repo}}</a></li>
+      {{/each}}
+    </ul>
+    {{else}}
+    <p>No recent projects</p>
+    {{/if}}
+  </div>
+
+@@include('inc/bottom.html')

@@ -1,0 +1,69 @@
+@@include('inc/top.html', {"id": "home-page", "title": "mohi, a dependency management tool for java projects"})
+
+  <div>
+
+    <h1>
+      You depend on other projects.<br>
+      You want to stay up to date.<br>
+      Mohi's got your back.
+    </h1>
+
+    <p>
+      Mohi gets you an overview of your project dependencies, the version you use
+      and the latest available, so you can quickly see what's drifting.
+      Then it's all boiled down into a badge showing the current status,
+      which you can embed on your site.
+    </p>
+
+    <ul id="examples">
+      <li>bitbucket/zenedith/oauth-uaa - <a href="/bitbucket/zenedith/oauth-uaa">oauth-uaa<img src="/bitbucket/zenedith/oauth-uaa.svg" alt="oauth-uaa"></a></li>
+      <li>github/Zenedith/gradle-repo - <a href="/github/Zenedith/gradle-repo">gradle-repo<img src="/github/Zenedith/gradle-repo.svg" alt="gradle-repo"></a></li>
+      <li>github/Zenedith/swagger-jersey2-gradle-demo-app - <a href="/github/Zenedith/swagger-jersey2-gradle-demo-app">swagger-jersey2-gradle-demo-app<img src="/github/Zenedith/swagger-jersey2-gradle-demo-app.svg" alt="swagger-jersey2-gradle-demo-app"></a></li>
+    </ul>
+
+    <h2>Giving you badges.</h2>
+
+    <p>
+      Got a java project (maven/gradle) ? Get a badge.
+      Mohi is free for public projects on <a href="https://github.com/">Github</a> and <a href="https://bibucket.ord/">Bitbucket</a>.
+    </p>
+
+    <p>Type your repository provider / username / repo name in below and get yours...</p>
+
+    <p class="badge-maker">
+      <strong>@@hostname/<span contenteditable class="nope" id="username" title="[repository procvider] / [username] / [repo name]">provider/username/repo</span>.png</strong>
+      <img id="badge" src="/img/status/outofdate.svg" alt="badge">
+    </p>
+
+    <p>
+      Mohi is currently <em>BETA</em>, which means it may be unreliable, unavailable or not working.
+      That said, it's already useful and we're working to make it rock solid.
+      It's hosted in Github so <a href="https://github.com/Zenedith/mohi">feel free to help</a>.
+    </p>
+
+    <h2>Most used dependencies</h2>
+
+    <p>These are the most used dependencies based on open source projects that are using them.</p>
+
+    <div id="dependency-counts-graph"></div>
+
+  </div>
+
+  <aside id="stats">
+
+    <div id="recently-watched" class="box">
+      <h2>Recently started watching</h2>
+      {{#if recentlyRetrievedManifests.length}}
+      <ul class="border-list">
+        {{#each recentlyRetrievedManifests}}
+        <li>{{user}} - <a href="/{{provider}}/{{user}}/{{repo}}">{{repo}}</a></li>
+        {{/each}}
+      </ul>
+      {{else}}
+      <p>No recent projects</p>
+      {{/if}}
+    </div>
+
+  </aside>
+
+@@include('inc/bottom.html')

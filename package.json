@@ -1,25 +1,28 @@
 {
-  "name": "david-www",
+  "name": "mohi",
   "version": "3.1.1",
-  "description": "Watching your Node.js dependencies.",
+  "description": "Watching your java dependencies.",
   "main": "index.js",
-  "homepage": "https://github.com/alanshaw/david-www",
+  "homepage": "https://github.com/Zenedith/mohi",
   "repository": {
     "type": "git",
-    "url": "git://github.com/alanshaw/david-www.git"
+    "url": "git://github.com/Zenedith/mohi.git"
   },
   "bugs": {
-    "url": "https://github.com/alanshaw/david-www/issues"
+    "url": "https://github.com/Zenedith/mohi/issues"
   },
   "keywords": [
     "dependency",
     "management",
-    "npm"
+    "maven",
+    "gradle",
+    "java"
   ],
   "author": "Alan Shaw",
   "contributors": [
     "Oliver Evans",
-    "XhmikosR"
+    "XhmikosR",
+    "Zenedith"
   ],
   "license": "MIT",
   "scripts": {
@@ -48,7 +51,15 @@
     "request": "^2.34.0",
     "rss": "^0.3.2",
     "semver": "^2.2.1",
-    "serve-favicon": "^2.0.0"
+    "serve-favicon": "^2.0.0",
+    "fs-extra": "^0.8.1",
+    "log": "^1.4.0",
+    "queue": "^2.2.0",
+    "jstoxml": "^0.2.2",
+    "newrelic": "^1.5.3",
+    "mohi-io": "1.0.0",
+    "underscore": "^1.6.0",
+    "bitbucket-api": "^0.0.6"
   },
   "devDependencies": {
     "brfs": "^1.0.0",

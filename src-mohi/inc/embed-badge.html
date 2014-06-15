@@ -1,0 +1,22 @@
+<div id="badge-embed" class="badge-embed">
+  <h1>Embed badge</h1>
+  <label for="badge-theme">Type</label>
+  <select id="badge-theme">
+    <option value="svg">SVG</option>
+    <option value="png">PNG</option>
+  </select>
+  <div class="theme theme-svg">
+    <a href="/{{provider}}/{{user}}/{{repo}}.svg"><img src="/{{provider}}/{{user}}/{{repo}}.svg" alt="Dependency status"></a>
+    <label for="badge-markdown-svg">Markdown</label>
+    <input id="badge-markdown-svg" type="text" value="[![Dependency Status](@@hostname/{{provider}}/{{user}}/{{repo}}.svg)](@@hostname/{{provider}}/{{user}}/{{repo}})">
+    <label for="badge-html-svg">HTML</label>
+    <input id="badge-html-svg" type="text" value="&lt;a href=&quot;@@hostname/{{provider}}/{{user}}/{{repo}}&quot; title=&quot;Dependency status&quot;&gt;&lt;img src=&quot;@@hostname/{{provider}}/{{user}}/{{repo}}.svg&quot;/&gt;&lt;/a&gt;">
+  </div>
+  <div class="theme theme-png">
+    <a href="/{{provider}}/{{user}}/{{repo}}.png"><img src="/{{provider}}/{{user}}/{{repo}}.png" alt="Dependency status"></a>
+    <label for="badge-markdown-png">Markdown</label>
+    <input id="badge-markdown-png" type="text" value="[![Dependency Status](@@hostname/{{provider}}/{{user}}/{{repo}}.png)](@@hostname/{{provider}}/{{user}}/{{repo}})">
+    <label for="badge-html-png">HTML</label>
+    <input id="badge-html-png" type="text" value="&lt;a href=&quot;@@hostname/{{provider}}/{{user}}/{{repo}}&quot; title=&quot;Dependency status&quot;&gt;&lt;img src=&quot;@@hostname/{{provider}}/{{user}}/{{repo}}.png&quot;/&gt;&lt;/a&gt;">
+  </div>
+</div>

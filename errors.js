@@ -53,6 +53,7 @@ module.exports.happened = function (er, req, res, msg) {
     console.log(er.stack)
   }
 
+  res.setHeader('Cache-Control', 'public, max-age=120');
   res.status(500).render(500, {er: msg})
 
   return true
