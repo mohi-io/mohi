@@ -47,9 +47,24 @@
     "logging": "info"
   },
   "storage": {
-    "type": "file",
+    "type": "elasticsearch",
     "elasticsearch": {
-      "host": "http://IP:PORT"
+      "hosts": [
+        {
+          "protocol": "http",
+          "host": "IP",
+          "port": 9200,
+          "weight": 1
+        }
+      ],
+      "sniffOnStart": true,
+      "sniffInterval": 60000,
+      "requestTimeout": 5000,
+      "minSockets": 1,
+      "log": {
+        "type": "stdio",
+        "level": "trace"
+      }
     }
   }
 }
