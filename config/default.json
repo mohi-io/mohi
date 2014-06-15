@@ -57,13 +57,16 @@
           "weight": 1
         }
       ],
-      "sniffOnStart": true,
-      "sniffInterval": 60000,
+      "sniffOnStart": false,
+      "sniffInterval": 0,
       "requestTimeout": 5000,
       "minSockets": 1,
+      "maxSockets": 11,
+      "keepAlive": true,
       "log": {
+        "_events": {},
         "type": "stdio",
-        "level": "trace"
+        "level": "debug"
       }
     }
   }
