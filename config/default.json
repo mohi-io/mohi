@@ -47,6 +47,9 @@
     "logging": "info"
   },
   "storage": {
-    "type": "file"
+    "type": "file",
+    "elasticsearch": {
+      "host": "http://IP:PORT"
+    }
   }
 }
