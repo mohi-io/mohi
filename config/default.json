@@ -36,7 +36,8 @@
     "gradleBuildDir": "var/mohi/gradle",
     "gradlewVendorDir": "vendor/gradlew",
     "decorateGradleBuildScript": "vendor/scripts/decorateVersion.sh",
-    "decorateGradleProjectInfoTask": "vendor/scripts/decorateProjectInfoTask.sh"
+    "decorateGradleProjectInfoTask": "vendor/scripts/decorateProjectInfoTask.sh",
+    "fixBuildGradleTask": "vendor/scripts/fixBuildGradle.sh"
   },
   "processingQueue": {
     "timeout": 3600000,
