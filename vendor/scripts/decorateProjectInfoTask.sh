@@ -15,6 +15,7 @@ if [ ! -z "$isProjectInfoTask" ]; then
 fi
 
 (cat <<'EOT'
+
 task(projectInfo) << {
 
   def path = project.hasProperty('outputFilePath') ? outputFilePath : 'projectInfo.json'
@@ -29,5 +30,6 @@ task(projectInfo) << {
       '    }' +
       '}'
 }
+
 EOT
 ) >> $gradleFilePath

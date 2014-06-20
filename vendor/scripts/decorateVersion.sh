@@ -19,6 +19,7 @@ fi
 isBuildscript=`grep "buildscript" $gradleFilePath`
 
 gradleContent=`cat<<EOT
+
 buildscript {
   repositories {
     maven { url '$versionRepo' }
@@ -27,6 +28,7 @@ buildscript {
   dependencies {
     classpath '$versionClassPath'
   }
+
 EOT`
 
 if [ -z "$isBuildscript" ]; then
