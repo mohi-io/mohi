@@ -19,6 +19,18 @@ var changelog = require("./changelog")
 
 var app = express()
 
+//add cors for api-docs folder
+app.use(function(req, res, next) {
+  res.set({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT, PATCH, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Accept',
+    'Access-Control-Request-Headers': 'Accept, Origin, Content-Type'
+  });
+  next();
+});
+
+
 app.engine("html", consolidate.handlebars)
 app.set("view engine", "html")
 app.set("views", __dirname + "/dist")
@@ -182,6 +194,7 @@ function sendStatusBadge(req, res, opts) {
   var providerName = req.params.provider;
   var user = req.params.user;
   var repo = req.params.repo;
+  var branch = ''; //TODO
 
   manifest.getManifest(providerName, user, repo, function(err, manifest) {
     if (err) {
@@ -189,7 +202,9 @@ function sendStatusBadge(req, res, opts) {
       res.status(404).sendfile('dist/img/status/unknown.' + (opts.extension === 'png' ? 'png' : 'svg'));
 
       //new project
-      mohi.addToQueue(providerName, user, repo);
+      mohi.addToQueue(providerName, user, repo, branch, function(err, res) {
+      });
+
       return;
     }
 
@@ -385,10 +400,16 @@ function update(req, res, opts) {
   var providerName = req.params.provider;
   var user = req.params.user;
   var repo = req.params.repo;
+  var branch = ''; //TODO
 
-  mohi.addToQueue(providerName, user, repo);
+  mohi.addToQueue(providerName, user, repo, branch, function (err) {
 
-  res.send('', 202);
+    if (errors.happened(err, req, res, 'Failed to update dependencies')) {
+      return;
+    }
+
+    return res.send('', 202);
+  });
 }
 
 function infoJson(req, res) {
