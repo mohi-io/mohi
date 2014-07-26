@@ -41,14 +41,22 @@
   },
   "processingQueue": {
     "timeout": 3600000,
-    "concurrency": 2
+    "concurrency": 2,
+    "type": "redis",
+    "prefix": "mohi_queue"
   },
   "newrelic": {
     "license_key": "",
     "logging": "info"
   },
   "storage": {
-    "type": "elasticsearch",
+    "type": "elasticsearch"
+  },
+  "cache": {
+    "type": "redis",
+    "prefix": "mohi_cache"
+  },
+  "backend": {
     "elasticsearch": {
       "hosts": [
         {
@@ -69,6 +77,25 @@
         "type": "stdio",
         "level": "debug"
       }
+    },
+    "redis": {
+      "hosts": [
+        {
+          "host": "IP",
+          "port": 6379
+        }
+      ],
+      "options": {
+        "auth_pass": "pass",
+        "retry_max_delay": 5000,
+        "connect_timeout": 5000,
+        "max_attempts": 5
+      }
+    }
+  },
+  "cron": {
+    "updateProject": {
+      "interval" : 1000
     }
   }
 }
