@@ -3,13 +3,13 @@
   "version": "3.1.1",
   "description": "Watching your java dependencies.",
   "main": "index.js",
-  "homepage": "https://github.com/Zenedith/mohi",
+  "homepage": "https://github.com/mohi-io/mohi",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Zenedith/mohi.git"
+    "url": "git://github.com/mohi-io/mohi.git"
   },
   "bugs": {
-    "url": "https://github.com/Zenedith/mohi/issues"
+    "url": "https://github.com/mohi-io/mohi/issues"
   },
   "keywords": [
     "dependency",
